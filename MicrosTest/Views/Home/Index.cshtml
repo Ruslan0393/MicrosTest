@@ -1,0 +1,116 @@
+﻿@model GetUserDto
+
+    <style>
+        .card {
+            padding: 20px;
+            display: flex;
+            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .card .image {
+                border-radius: 50%;
+                overflow: hidden;
+                width: 160px;
+                height: 160px;
+                margin: 20px 0;
+            }
+
+                .card .image img {
+                    object-fit: cover;
+                    width: 160px;
+                    height: 160px;
+                }
+
+            .card .middle {
+                display: flex;
+                flex-direction: column;
+            }
+
+        .middle h5 {
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .middle small {
+            font-size: 16px;
+            text-align: center;
+            color: rgb(150, 150, 150);
+        }
+
+        .card ul {
+            display: flex;
+            padding: 0;
+            margin-top: 12px;
+            justify-content: center;
+        }
+
+            .card ul li {
+                list-style: none;
+                margin: 0 5px;
+            }
+
+                .card ul li a {
+                    padding: 5px;
+                }
+
+        .text p {
+            color: black;
+        }
+
+        .text div {
+            color: rgb(150, 150, 150);
+        }
+    </style>
+
+    <div class="container">
+        <div class="row">
+            @foreach(var user in Model.Users)
+            {
+             <div class="col-md-6  col-12 col-lg-4">
+                <div class="card">
+                    <div class="image">
+                        <img src="~/Images/@user.Image" />
+                    </div>
+                    <div class="middle">
+                        <h5>@user.Fullname</h5>
+                        <small>@user.Username</small>
+                        <ul>
+                            <li>
+                                <a href="@user.Facebook">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@user.Twitter">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@user.Email">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text">
+                        <p>
+                           @user.Info
+                        </p>
+                        <div>Last seen at @user.LastTimeAccess.ToString("mm")</div>
+                    </div>
+                </div>
+            </div>
+
+            }
+
+          
+        </div>
+    </div>
